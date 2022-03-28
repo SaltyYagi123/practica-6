@@ -48,7 +48,7 @@ public class ProcessController {
         return ResponseEntity.ok().body(ResponseHTMLGenerator.message2);
     }
 
-    record DataRequest(
+    public record DataRequest(
             @NonNull
             @NotEmpty
             String fullName,
