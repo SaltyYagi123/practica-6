@@ -70,7 +70,7 @@ public class ProcessControllerTest {
 
         //Ejemplo donde el nombre sea incorrecto 
         MultiValueMap<String, String> data2 = new LinkedMultiValueMap<>();
-        data2.add("fullName", "Donoso2354");
+        data2.add("fullName", "");
         data2.add("dni", "06679111A");
         data2.add("telefono", "+44 7887636994");
 
@@ -99,7 +99,7 @@ public class ProcessControllerTest {
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(data1, headers);
         HttpEntity<MultiValueMap<String, String>> request_2 = new HttpEntity<>(data2, headers);
         HttpEntity<MultiValueMap<String, String>> request_3 = new HttpEntity<>(data3, headers);
-        HttpEntity<MultiValueMap<String, String>> request_4 = new HttpEntity<>(data3, headers);
+        HttpEntity<MultiValueMap<String, String>> request_4 = new HttpEntity<>(data4, headers);
         // Ya que el MultiValueMap esta ahi, a contrario que el anterior
         // When
         ResponseEntity<String> result = this.restTemplate.postForEntity(address, request, String.class);
@@ -110,7 +110,7 @@ public class ProcessControllerTest {
         then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
         then(result_2.getStatusCode()).isEqualTo(HttpStatus.OK);
         then(result_3.getStatusCode()).isEqualTo(HttpStatus.OK);
-        then(result_4.getStatusCode()).isEqualTo(HttpStatus.OK);
+        then(result_4.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
 
     }
 }
