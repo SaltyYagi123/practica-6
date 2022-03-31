@@ -61,10 +61,12 @@ public class ProcessControllerTest {
          * public ResponseEntity<String> processDataLegacy(@RequestBody
          * MultiValueMap<String, String> data1) {
          */
+
+        //Ejemplo de Test donde todos los datos deben de funcionar bien 
         MultiValueMap<String, String> data1 = new LinkedMultiValueMap<>();
-        data1.add("fullNameRaw", "Yago Tobio");
-        data1.add("dniRaw", "06679111A");
-        data1.add("telefonoRaw", "+44 7887636994");
+        data1.add("fullName", "Yago Tobio");
+        data1.add("dni", "06679111A");
+        data1.add("telefono", "+44 7887636994");
 
         // Ahora debemos de construir el request y algo mas
         HttpHeaders headers = new HttpHeaders();
