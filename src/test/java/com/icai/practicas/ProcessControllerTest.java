@@ -68,6 +68,25 @@ public class ProcessControllerTest {
         data1.add("dni", "06679111A");
         data1.add("telefono", "+44 7887636994");
 
+        //Ejemplo donde el nombre sea incorrecto 
+        MultiValueMap<String, String> data2 = new LinkedMultiValueMap<>();
+        data2.add("fullName", "Donoso2354");
+        data2.add("dni", "06679111A");
+        data2.add("telefono", "+44 7887636994");
+
+        //Ejemplo donde el DNI sea incorrecto 
+        MultiValueMap<String, String> data3 = new LinkedMultiValueMap<>();
+        data3.add("fullName", "Yago Tobio");
+        data3.add("dni", "123456789AX");
+        data3.add("telefono", "+44 7887636994");
+
+        //Ejemplo done el numero del telefono sea incorrecto
+        MultiValueMap<String, String> data4 = new LinkedMultiValueMap<>();
+        data3.add("fullName", "Yago Tobio");
+        data3.add("dni", "06679111A");
+        data3.add("telefono", "WAZAAAAAAP");
+
+
         // Ahora debemos de construir el request y algo mas
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -78,12 +97,20 @@ public class ProcessControllerTest {
          * produces = MediaType.TEXT_HTML_VALUE)
          */
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(data1, headers);
-
+        HttpEntity<MultiValueMap<String, String>> request_2 = new HttpEntity<>(data2, headers);
+        HttpEntity<MultiValueMap<String, String>> request_3 = new HttpEntity<>(data3, headers);
+        HttpEntity<MultiValueMap<String, String>> request_4 = new HttpEntity<>(data3, headers);
         // Ya que el MultiValueMap esta ahi, a contrario que el anterior
         // When
         ResponseEntity<String> result = this.restTemplate.postForEntity(address, request, String.class);
+        ResponseEntity<String> result_2 = this.restTemplate.postForEntity(address, request_2, String.class);
+        ResponseEntity<String> result_3 = this.restTemplate.postForEntity(address, request_3, String.class);
+        ResponseEntity<String> result_4 = this.restTemplate.postForEntity(address, request_4, String.class);
 
         then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
+        then(result_2.getStatusCode()).isEqualTo(HttpStatus.OK);
+        then(result_3.getStatusCode()).isEqualTo(HttpStatus.OK);
+        then(result_4.getStatusCode()).isEqualTo(HttpStatus.OK);
 
     }
 }
