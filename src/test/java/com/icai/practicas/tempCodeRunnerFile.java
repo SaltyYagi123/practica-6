@@ -113,7 +113,7 @@ public class ProcessControllerTest {
         // When
         ResponseEntity<String> result_correct = this.restTemplate.postForEntity(address, request_correct, String.class);
 
-        then(result_correct.getBody()).contains("Muchas gracias por enviar los datos");
+        then(result_correct.getBody()).contains("Gracias por enviar los datos");
         then(result_correct.getStatusCode()).isEqualTo(HttpStatus.OK);
 
     }
