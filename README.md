@@ -1,47 +1,27 @@
-# Practica 6: Testing de una aplicacion de Spring Boot
+# Practica 6 - PAT: Testing Aplicaciones Spring Boot
 
-## Objetivo de la práctica
+## Gitpod:
 
-Dado un desarrollo de Spring Boot, es necesario anhadir tests a las siguientes clases:
+https://gitpod.io/#https://github.com/SaltyYagi123/practica-6
 
-- DNI & Telefono (Unit Tests) (Cada clase tiene un metodo y varias casuisticas para probar)
-- ProcessController (E2E Tests) (2 endpoints)
+## Objetivos: 
+Dado un desarollo de SpringBoot, es necesario añadir tests a las siguientes clases: 
+- DNI y Telefono en formato Unit Tests. Cada clase con su metodo y casuisticas a probar
+	
+- ProcessController (End to End Tests) (2 endpoints, incluyendo Legacy)
 
-```
-mvn clean spring-boot:run
+## Pruebas jUnit
+En la carpeta "model" podrá encontrar 2 ficheros "DNITest.java" y "TelefonoTest.java", en los cuales se han desarrollado los tests correspondientes. 
 
-curl -v -X POST http://localhost:8080/api/v1/process-step1-legacy \
-   -H "Content-Type: application/x-www-form-urlencoded" \
-   -d "fullName=Juan%20Antonio%20Brena%20Moral&dni=12345678Z&telefono=%2B34%20600903434"
+- DNI -> Se ha analizado los patterns y secuencias numericas declaradas en el metodo de validación incorporada en la clase de Java del DNI 
+- Teléfono -> Se han realizado las correspondientes pruebas para verificar si se pueden usar con o sin prefijo internacional. Todo se verifica mediante el metodo de valiación. 
 
-curl -v -X POST http://localhost:8080/api/v1/process-step1 \
-   -H 'Content-Type: application/json' \
-   -d '{"fullName":"Juan Antonio Brena Moral","dni":"12345678Z", "telefono":"+34 600903434"}'
-```
+## Pruebas E2E (End to End)
 
-## Entrega
+Se va a validar que la clase ProcessControllerTest.java, ubicada en la carpeta "controller" del directorio corresponda a los Tests y funcione adecuadamente. Para ello: 
+- Se debe de verificar el status
+- Se deben de realizar dos tipos de pruebas (OK y KO), teniendo un total de 4 anotaciones @Test
+- Se comprueba que al enviar los datos correctos se obtiene en el BODY HTML "OK", y su HTTPStatus correspondiente. 
 
-Sube la practica solucionada a un repositorio de Github.
-y crea un documento en formato Markdown, explicando las casuisticas que se van a probar.
-
-## Criterios de evaluación
-
-- 0 -> 5
-    - Entregar en fecha
-    - Subir ejemplo a Github
-    - Ejemplo funcional
-    - Aparentemente funciona
-    - Con README
-- 5 -> 9
-    - La práctica entregada hace lo que se pide
-- 9 -> 10
-    - El alumno explora la materia y añade elementos adicionales
-
-**Nota:** Si el alumno no entrega a tiempo la practica, la calificacion maxima
-sera de un 5 si el retraso es de una semana y no presentado si el retraso es major.
-
-## References
-
-- https://docs.spring.io/spring-boot/docs/1.5.16.RELEASE/reference/html/boot-features-testing.html
-- https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/test/web/client/TestRestTemplate.html
-- https://www.urlencoder.org/
+- Igualmente, se introducen los DNI's, Nombres y Numeros de telefonos para efectuar a su vez los unit tests hechos previamente 
+	- Es importante anotar que en caso de que estos valores sean Nulos, se debería recibir un BAD REQUEST ya que no se ha recibido lo apropiado y los datos en su totalidad. 
