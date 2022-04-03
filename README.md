@@ -1,5 +1,9 @@
 # Practica 6 - PAT: Testing Aplicaciones Spring Boot
 
+## Gitpod:
+
+(https://gitpod.io/#https://github.com/SaltyYagi123/practica-6)
+
 ## Objetivos: 
 Dado un desarollo de SpringBoot, es necesario añadir tests a las siguientes clases: 
 - DNI y Telefono en formato Unit Tests. Cada clase con su metodo y casuisticas a probar
@@ -21,7 +25,3 @@ Se va a validar que la clase ProcessControllerTest.java, ubicada en la carpeta "
 
 - Igualmente, se introducen los DNI's, Nombres y Numeros de telefonos para efectuar a su vez los unit tests hechos previamente 
 	- Es importante anotar que en caso de que estos valores sean Nulos, se debería recibir un BAD REQUEST ya que no se ha recibido lo apropiado y los datos en su totalidad. 
-
-## Gitpod:
-
-[Starting — Gitpod](https://gitpod.io/#https://github.com/SaltyYagi123/practica-6)
