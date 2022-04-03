@@ -2,7 +2,7 @@
 
 ## Gitpod:
 
-(https://gitpod.io/#https://github.com/SaltyYagi123/practica-6)
+https://gitpod.io/#https://github.com/SaltyYagi123/practica-6
 
 ## Objetivos: 
 Dado un desarollo de SpringBoot, es necesario añadir tests a las siguientes clases: 
