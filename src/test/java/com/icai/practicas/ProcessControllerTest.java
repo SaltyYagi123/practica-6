@@ -99,30 +99,8 @@ public class ProcessControllerTest {
         data_correct.add("dni", "06679111A");
         data_correct.add("telefono", "+44 7887636994");
 
-<<<<<<< HEAD
         // Request
-=======
-        //Ejemplo donde el nombre sea incorrecto 
-        MultiValueMap<String, String> data2 = new LinkedMultiValueMap<>();
-        data2.add("fullName", "");
-        data2.add("dni", "06679111A");
-        data2.add("telefono", "+44 7887636994");
 
-        //Ejemplo donde el DNI sea incorrecto 
-        MultiValueMap<String, String> data3 = new LinkedMultiValueMap<>();
-        data3.add("fullName", "Yago Tobio");
-        data3.add("dni", "123456789AX");
-        data3.add("telefono", "+44 7887636994");
-
-        //Ejemplo done el numero del telefono sea incorrecto
-        MultiValueMap<String, String> data4 = new LinkedMultiValueMap<>();
-        data3.add("fullName", "Yago Tobio");
-        data3.add("dni", "06679111A");
-        data3.add("telefono", "WAZAAAAAAP");
-
-
-        // Ahora debemos de construir el request y algo mas
->>>>>>> 0af3192c150f4652adea3efda90c29891b58fd4c
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
@@ -131,27 +109,15 @@ public class ProcessControllerTest {
          * aqui
          * produces = MediaType.TEXT_HTML_VALUE)
          */
-<<<<<<< HEAD
         HttpEntity<MultiValueMap<String, String>> request_correct = new HttpEntity<>(data_correct, headers);
-=======
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(data1, headers);
-        HttpEntity<MultiValueMap<String, String>> request_2 = new HttpEntity<>(data2, headers);
-        HttpEntity<MultiValueMap<String, String>> request_3 = new HttpEntity<>(data3, headers);
-        HttpEntity<MultiValueMap<String, String>> request_4 = new HttpEntity<>(data4, headers);
->>>>>>> 0af3192c150f4652adea3efda90c29891b58fd4c
+
         // Ya que el MultiValueMap esta ahi, a contrario que el anterior
         // When
         ResponseEntity<String> result_correct = this.restTemplate.postForEntity(address, request_correct, String.class);
 
-<<<<<<< HEAD
         then(result_correct.getBody()).contains("Muchas gracias por enviar los datos");
         then(result_correct.getStatusCode()).isEqualTo(HttpStatus.OK);
-=======
-        then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
-        then(result_2.getStatusCode()).isEqualTo(HttpStatus.OK);
-        then(result_3.getStatusCode()).isEqualTo(HttpStatus.OK);
-        then(result_4.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
->>>>>>> 0af3192c150f4652adea3efda90c29891b58fd4c
+
 
     }
 
@@ -172,7 +138,6 @@ public class ProcessControllerTest {
         datosNullName.add("fullName", "");
         datosNullName.add("dni", "0679111A");
         datosNullName.add("telefono", "619321455");
-        // Avisarle a Blanca sobre su error aquí!!!!!!
 
         // El DNI introducido es incorrecto
         MultiValueMap<String, String> datosErrorDni = new LinkedMultiValueMap<>();
