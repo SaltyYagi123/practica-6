@@ -54,7 +54,7 @@ public class ProcessControllerTest {
     @Test
     public void given_app_when_login_using_right_credentials_then_KO() throws Exception {
         // Pasamos el puerto
-        String address = "http://localhost" + port + "api/v1/process-step1";
+        String address = "http://localhost:" + port + "/api/v1/process-step1";
 
         ProcessController.DataRequest dataErrorDNI = new ProcessController.DataRequest("Yago Tobio", "987654321",
                 "619321455");
@@ -77,7 +77,7 @@ public class ProcessControllerTest {
         then(resultErrorTelf.getBody()).isEqualTo("{\"result\":\"KO\"}");
 
         then(resultErrorDNI.getStatusCode()).isEqualTo(HttpStatus.OK);
-        then(resultErrorTelf.getStatusCode()).isEqualTo(HttpStatus.OK);
+        then(resultErrorTelf.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
     }
 
     @Test
@@ -172,7 +172,7 @@ public class ProcessControllerTest {
         then(resultErrorTelf.getBody()).contains("Hemos tenido un problema con su solicitud");
 
         then(resultErrorName.getStatusCode()).isEqualTo(HttpStatus.OK);
-        then(resultNullName.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        then(resultNullName.getStatusCode()).isEqualTo(HttpStatus.OK);
         then(resultErrorDNI.getStatusCode()).isEqualTo(HttpStatus.OK);
         then(resultErrorTelf.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
