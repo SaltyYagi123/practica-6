@@ -13,6 +13,6 @@ jobs:
         with:
           java-version: 17
       - name: Build with Maven Wrapper
-        run: ../mvn test -B
+        run: mvn test -B
       - name: Publish Test Report
         uses: scacap/action-surefire-report@v1
